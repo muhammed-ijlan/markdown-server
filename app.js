@@ -5,7 +5,6 @@ const express = require('express');
 const cors = require('cors');
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
-var parser = require('ua-parser-js');
 
 // app creation
 const app = express();
@@ -22,13 +21,6 @@ app.use(cors(corsOptions));
 //body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
-//user agent
-app.use(function (req, res, next) {
-  req.useragent = parser(req.headers['user-agent']);
-  next();
-});
 
 
 // Routing happens here
